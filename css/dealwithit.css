@@ -1,0 +1,39 @@
+body {
+    background-color: white;
+    margin: 10px;
+    padding:0;
+    }
+
+div#ontop {
+    z-index: 20;
+    position: fixed;
+    }
+        
+div#container {
+    border: 1px solid black;
+    position: relative;
+    width: calc(100vw - 20px);
+    height: calc(100vh - 20px);
+    }
+        
+div.glasses {
+    background-image: url('http://rawgit.com/hxlnt/aifunclub/master/dealwithit/img/glasses.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    z-index: 20;
+    }
+    
+div#text {
+    font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+    font-size: 50px;
+    text-shadow:
+        -1px -1px 0 white,  
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;
+    top: -100px;
+    z-index: 30;
+    position: relative;
+    left: 50px;
+    }
