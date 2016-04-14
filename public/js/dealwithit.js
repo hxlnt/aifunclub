@@ -2,6 +2,9 @@ var socket = io();
 var face, confirmedurl, origimgurl, errcode;
 
 function submitUrl() {
+    $( '#container' ).replaceWith( '' );
+    $( '#ontop' ).replaceWith( '' );
+    $( '#text' ).replaceWith( '' );
     origimgurl = $( 'input:first' ).val(); 
     socket.emit('origimgurl', origimgurl);
 }
@@ -21,24 +24,16 @@ socket.on('face', function(response) {
             console.log(face);
             var centerofeyes = ((face.faceLandmarks.pupilLeft.x + face.faceLandmarks.pupilRight.x) / 2);
             if (face.faceAttributes.headPose.yaw > 0) {
-                // jQuery('<div>', {
-                //     class: 'glasses',
-                //     style: 'transform-origin: 50% 100%; top: 0px; transform: rotateZ(' + (face.faceAttributes.headPose.roll) + 'deg); width:' + (1.35 * face.faceRectangle.width) + 'px; left:' + (centerofeyes - 0.62 * (1.35 * face.faceRectangle.width)) + 'px; height:' + (1.2 * 0.15 * face.faceRectangle.width) + 'px;'
-                // }).appendTo('#ontop');
-                $( '#ontop' ).replaceWith( $('<div>', {
+                jQuery('<div>', {
                     class: 'glasses',
                     style: 'transform-origin: 50% 100%; top: 0px; transform: rotateZ(' + (face.faceAttributes.headPose.roll) + 'deg); width:' + (1.35 * face.faceRectangle.width) + 'px; left:' + (centerofeyes - 0.62 * (1.35 * face.faceRectangle.width)) + 'px; height:' + (1.2 * 0.15 * face.faceRectangle.width) + 'px;'
-                }));
+                }).appendTo('#ontop');
             }
             else {
-                // jQuery('<div>', {
-                //     class: 'glasses',
-                //     style: 'transform-origin: 50% 0%; top: 0px; transform: rotateY(180deg) rotateZ(' + (-1 * face.faceAttributes.headPose.roll) + 'deg); width:' + (1.35 * face.faceRectangle.width) + 'px; left:' + (centerofeyes - 0.35 * (1.35 * face.faceRectangle.width)) + 'px; height:' + (1.2 * 0.15 * face.faceRectangle.width) + 'px;'
-                // }).appendTo('#ontop');
-                $( '#ontop' ).replaceWith( $('<div>', {
+                jQuery('<div>', {
                     class: 'glasses',
                     style: 'transform-origin: 50% 0%; top: 0px; transform: rotateY(180deg) rotateZ(' + (-1 * face.faceAttributes.headPose.roll) + 'deg); width:' + (1.35 * face.faceRectangle.width) + 'px; left:' + (centerofeyes - 0.35 * (1.35 * face.faceRectangle.width)) + 'px; height:' + (1.2 * 0.15 * face.faceRectangle.width) + 'px;'
-                }));
+                }).appendTo('#ontop');
             }
             var landingspot = (face.faceLandmarks.pupilLeft.y + face.faceLandmarks.pupilRight.y) / 2 - (parseInt($(".glasses").eq(i).css('height'), 10) / 2.2);
             $(".glasses").eq(i).animate({ top: (landingspot) }, 1800, function() {
