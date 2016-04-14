@@ -20,7 +20,7 @@ io.on('connection', function(socket) {
             analyzesHeadPose: true
         }).then(function(error, response) {
             socket.emit('errcode', error.message);
-            console.long(error.message);
+            console.log(error.message);
             socket.emit('face', response);
             console.log(response);
         });
