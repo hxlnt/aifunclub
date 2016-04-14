@@ -7,8 +7,7 @@ function submitUrl() {
 }
 
 // TODO: Handle errors if submitted URL doesn't return proper JSON 
-socket.on('errcode', function(error){
-    errcode = error.message;
+socket.on('errcode', function(){
     location.reload(true);
     alert(errcode);  
 });
