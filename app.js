@@ -21,7 +21,6 @@ io.on('connection', function(socket) {
         }).then(function(response) {
             socket.emit('face', response);
             console.log(response);
-            }
+            });
         });
     });
-});
