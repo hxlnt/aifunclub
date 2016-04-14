@@ -14,7 +14,8 @@ socket.on('face', function(response) {
         location.reload(true);
     }
     else {
-        jQuery('<img>', { src: origimgurl }).appendTo('#container');
+        //jQuery('<img>', { src: origimgurl }).appendTo('#container');
+        $( '#container' ).replaceWith( $('<img>', { src: origimgurl }) )
         for (i = 0; i < response.length; i++) {
             face = response[i];
             console.log(face);
