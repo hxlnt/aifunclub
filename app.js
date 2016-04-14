@@ -1,28 +1,13 @@
 // node variables
-var fs = require('fs');
+var express = require('express'); 
+var app = express(); 
+var server = require('http').createServer(app); 
+var io = require('socket.io')(app);
+var port = process.env.PORT || 3000;
 var oxford = require('project-oxford');
 var client = new oxford.Client(process.env.myoxfordkey);
-//var Bing = require('node-bing-api')({ accKey: "V7sFqETZVIxon+asFpVgOusoE6yMsqNkU/iDMeE0iyc" });
-var app = require('http').createServer(handler)
-var io = require('socket.io')(app);
-// var azure = require('azure-storage');
-// var blobService = azure.createBlobService('aifunclub', 'foj2IOFD2pZNBk9dfv4OSe/BD3Oak/j16dAQ5uGwN7kF+iuCRYkDQ316qX8mo93nfLfsSqH5PlaD1T2arw5fbA==');
-// var uuid = require('node-uuid');
-// var confirmedurl;
 
-app.listen(8081);
-
-function handler(req, res) {
-    fs.readFile(__dirname + '/index.html',
-        function(err, data) {
-            if (err) {
-                res.writeHead(500);
-                return res.end('Error loading index.html');
-            }
-            res.writeHead(200);
-            res.end(data);
-        });
-}
+app.use(express.static(__dirname + '/public'));
 
 io.on('connection', function(socket) { 
     socket.on('origimgurl', function(origimgurl) {
@@ -37,25 +22,3 @@ io.on('connection', function(socket) {
         });
     });
 });
-    
-//     socket.on('confirmedurl', function(x) {
-//         confirmedurl = x;
-//         });
-//     });
-
-// var blobname = uuid.v4();
-
-// blobService.createContainerIfNotExists('urlcontainer', {
-//   publicAccessLevel: 'blob'
-// }, function(error, result, response) {
-//   if (!error) {
-//     // if result = true, container was created.
-//     // if result = false, container already existed.
-//   }
-// });
-
-// blobService.createBlockBlobFromText('urlcontainer', blobname, confirmedurl, function(error, result, response){
-//   if(!error){
-//     // file uploaded
-//   }
-// });
