@@ -6,10 +6,6 @@ function submitUrl() {
     socket.emit('origimgurl', origimgurl);
 }
 
-// $('#share').on(click, function(){
-//     confirmedurl = origimgurl;
-//      socket.emit('confirmedurl', confirmedurl);
-// });
 // TODO: Handle errors if submitted URL doesn't return proper JSON 
 
 socket.on('face', function(response) {
@@ -30,7 +26,7 @@ socket.on('face', function(response) {
                 style: 'transform-origin: 50% 0%; top: 0px; transform: rotateY(180deg) rotateZ(' + (-1 * face.faceAttributes.headPose.roll) + 'deg); width:' + (1.35 * face.faceRectangle.width) + 'px; left:' + (centerofeyes - 0.35 * (1.35 * face.faceRectangle.width)) + 'px; height:' + (1.2 * 0.15 * face.faceRectangle.width) + 'px;'
             }).appendTo('#ontop');
         }
-        var landingspot = (face.faceLandmarks.pupilLeft.y + face.faceLandmarks.pupilRight.y) / 2 - (parseInt($(".glasses").eq(i).css('height'), 10) / 2);
+        var landingspot = (face.faceLandmarks.pupilLeft.y + face.faceLandmarks.pupilRight.y) / 2 - (parseInt($(".glasses").eq(i).css('height'), 10) / 1.8);
         $(".glasses").eq(i).animate({ top: (landingspot) }, 1800, function() {
             if (parseInt($(".glasses").eq(-1).css('top'), 10) >= Math.trunc(landingspot)) {
                 $('#text').html('DEAL WITH IT');
