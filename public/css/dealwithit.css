@@ -17,7 +17,7 @@ div#container {
     }
         
 div.glasses {
-    background-image: url('http://rawgit.com/hxlnt/aifunclub/master/dealwithit/img/glasses.svg');
+    background-image: url('../img/glasses.svg');
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
