@@ -18,7 +18,7 @@ socket.on('face', function(response) {
     }
     else {
         //jQuery('<img>', { src: origimgurl }).appendTo('#container');
-        $('<img>', { src: origimgurl }) ).appendTo( '#container' );
+        $('<img>', { src: origimgurl } ).appendTo( '#container' );
         for (i = 0; i < response.length; i++) {
             face = response[i];
             console.log(face);
