@@ -9,7 +9,7 @@ var client = new oxford.Client(process.env.myoxfordkey);
 
 server.listen(port);
 
-server.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 
 io.on('connection', function(socket) { 
     socket.on('origimgurl', function(origimgurl) {
