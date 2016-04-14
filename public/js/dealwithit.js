@@ -11,7 +11,7 @@ socket.on('errcode', function(error){
     errcode = error.message;
     location.reload(true);
     alert(errcode);  
-}
+});
 
 socket.on('face', function(response) {
     jQuery('<img>', { src: origimgurl }).appendTo('#container');
