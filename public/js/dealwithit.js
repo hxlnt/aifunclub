@@ -1,4 +1,4 @@
-var socket = io.connect();
+var socket = io();
 var face, confirmedurl, origimgurl;
 
 function submitUrl() {
