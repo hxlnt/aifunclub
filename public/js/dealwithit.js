@@ -9,7 +9,7 @@ function submitUrl() {
 // TODO: Handle errors if submitted URL doesn't return proper JSON 
 
 socket.on('face', function(response) {
-    if (response[0] = '') { console.log('Error!'); }
+    if (response == '') { alert('Error!'); }
     else {
         jQuery('<img>', { src: origimgurl }).appendTo('#container');
         for (i = 0; i < response.length; i++) {
