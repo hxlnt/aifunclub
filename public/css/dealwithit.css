@@ -12,8 +12,7 @@ div#ontop {
 div#container {
     border: 1px solid black;
     position: relative;
-    width: calc(100vw - 20px);
-    height: calc(100vh - 20px);
+    width: calc(100% - 20px);
     }
         
 div.glasses {
