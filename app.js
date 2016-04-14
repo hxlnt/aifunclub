@@ -19,10 +19,14 @@ io.on('connection', function(socket) {
             analyzesFaceLandmarks: true,
             analyzesHeadPose: true
         }).then(function(error, response) {
+            if (error.message != undefined){
             socket.emit('errcode', error.message);
             console.log(error.message);
+            }
+            else {
             socket.emit('face', response);
             console.log(response);
+            }
         });
     });
 });
