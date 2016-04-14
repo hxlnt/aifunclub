@@ -1,5 +1,5 @@
 var socket = io();
-var face, confirmedurl, origimgurl;
+var face, confirmedurl, origimgurl, errcode;
 
 function submitUrl() {
     origimgurl = $( 'input:first' ).val(); 
@@ -7,6 +7,11 @@ function submitUrl() {
 }
 
 // TODO: Handle errors if submitted URL doesn't return proper JSON 
+socket.on('errcode', function(error){
+    errcode = error.message;
+    location.reload(true);
+    alert(errcode);  
+}
 
 socket.on('face', function(response) {
     jQuery('<img>', { src: origimgurl }).appendTo('#container');

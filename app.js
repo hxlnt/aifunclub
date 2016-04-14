@@ -18,7 +18,9 @@ io.on('connection', function(socket) {
             url: origimgurl,
             analyzesFaceLandmarks: true,
             analyzesHeadPose: true
-        }).then(function(response) {
+        }).then(function(error, response) {
+            socket.emit('errcode', error.message);
+            console.long(error.message);
             socket.emit('face', response);
             console.log(response);
         });
