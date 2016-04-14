@@ -2,10 +2,12 @@
 var express = require('express'); 
 var app = express(); 
 var server = require('http').createServer(app); 
-var io = require('socket.io')(app);
+var io = require('socket.io').listen(server);
 var port = process.env.PORT || 3000;
 var oxford = require('project-oxford');
 var client = new oxford.Client(process.env.myoxfordkey);
+
+server.listen(port);
 
 server.use(express.static(__dirname + '/public'));
 
