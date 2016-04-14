@@ -7,7 +7,7 @@ var port = process.env.PORT || 3000;
 var oxford = require('project-oxford');
 var client = new oxford.Client(process.env.myoxfordkey);
 
-app.use(express.static(__dirname + '/public'));
+server.use(express.static(__dirname + '/public'));
 
 io.on('connection', function(socket) { 
     socket.on('origimgurl', function(origimgurl) {
