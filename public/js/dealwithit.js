@@ -13,7 +13,7 @@ function submitUrl() {
 // TODO: Handle errors if submitted URL doesn't return proper JSON 
 
 socket.on('face', function(response) {
-    jQuery('<img>', { src: origimgurl, width: '80vw' }).appendTo('#container');
+    jQuery('<img>', { src: origimgurl }).appendTo('#container');
     for (i = 0; i < response.length; i++) {
         face = response[i];
         console.log(face);
