@@ -2,9 +2,9 @@ var socket = io();
 var face, confirmedurl, origimgurl, errcode;
 
 function submitUrl() {
-    $( '#container' ).replaceWith( '' );
-    $( '#ontop' ).replaceWith( '' );
-    $( '#text' ).replaceWith( '' );
+    $( '#container' ).html( '' );
+    $( '#ontop' ).html( '' );
+    $( '#text' ).html( '' );
     origimgurl = $( 'input:first' ).val(); 
     socket.emit('origimgurl', origimgurl);
 }
@@ -18,7 +18,7 @@ socket.on('face', function(response) {
     }
     else {
         //jQuery('<img>', { src: origimgurl }).appendTo('#container');
-        $( '#container' ).replaceWith( $('<img>', { src: origimgurl }) )
+        $('<img>', { src: origimgurl }) ).appendTo( '#container' );
         for (i = 0; i < response.length; i++) {
             face = response[i];
             console.log(face);
