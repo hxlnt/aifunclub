@@ -55,7 +55,7 @@ socket.on('face', function(response) {
                 else {
                     jQuery('<div>', {
                         class: 'glasses',
-                        style: 'transform-origin: 50% 0%; top: 0px; transform: rotateY(180deg) rotateZ(' + (-1 * face.faceAttributes.headPose.roll) + 'deg); width:' + (scalar * 1.35 * face.faceRectangle.width) + 'px; left:' + scalar * (centerofeyes - 0.35 * (1.35 * face.faceRectangle.width)) + 'px; height:' + scalar * (1.2 * 0.15 * face.faceRectangle.width) + 'px;'
+                        style: 'transform-origin: 50% 0%; top: 0px; transform: rotateY(180deg) rotateZ(' + (-1 * face.faceAttributes.headPose.roll) + 'deg); width:' + (scalar * 1.35 * face.faceRectangle.width) + $('#container').css("margin-left") + 'px; left:' + scalar * (centerofeyes - 0.35 * (1.35 * face.faceRectangle.width)) + 'px; height:' + scalar * (1.2 * 0.15 * face.faceRectangle.width) + 'px;'
                     }).appendTo('#ontop');
                 }
           
