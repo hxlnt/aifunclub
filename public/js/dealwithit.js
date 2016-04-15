@@ -72,6 +72,6 @@ function imgResize(){
      $('img').css("height", imgheight + 'px');
      $('#text').css("font-size", imgwidth/10 + "px");
      $('#text').css("top", (imgheight - (imgwidth/10)) + "px");
-     $('#glasses').width = scalar * $('#glasses').width;
+     $('.glasses').width = scalar * $('.glasses').width;
 });    
 }
