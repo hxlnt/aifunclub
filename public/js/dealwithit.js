@@ -1,6 +1,6 @@
 var socket = io();
 var scalar = 1;
-var face, confirmedurl, origimgurl, errcode;
+var face, imgheight, imgwidth, landingspot, confirmedurl, origimgurl, errcode;
 
 if (getQueryVariable('link')) {
     $( '#container' ).html( '' );
