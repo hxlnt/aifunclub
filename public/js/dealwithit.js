@@ -59,7 +59,7 @@ socket.on('face', function(response) {
                 $('#text').css("top", (imgheight - (imgwidth/10)) + "px");
                 $('.glasses').width = scalar * $('.glasses').width;
                 
-                var landingspot = scalar * (face.faceLandmarks.pupilLeft.y + face.faceLandmarks.pupilRight.y) / 2 - (parseInt($(".glasses").eq(i).css('height'), 10) / 2.2);
+                var landingspot = scalar * ( (face.faceLandmarks.pupilLeft.y + face.faceLandmarks.pupilRight.y) / 2 - (parseInt($(".glasses").eq(i).css('height'), 10) / 2.2) );
             
                 $(".glasses").eq(i).animate({ top: (landingspot) }, 1800, function() {
                     if (parseInt($(".glasses").eq(-1).css('top'), 10) >= Math.trunc(landingspot)) {
