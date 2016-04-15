@@ -12,7 +12,6 @@ if (getQueryVariable('link')) {
     socket.emit('origimgurl', origimgurl);
 }
 
-
 function submitUrl() {
     $( '#container' ).html( '' );
     $( '#ontop' ).html( '' );
