@@ -39,7 +39,7 @@ socket.on('face', function(response) {
             
             $(".glasses").eq(i).animate({ top: (landingspot) }, 1800, function() {
                 if (parseInt($(".glasses").eq(-1).css('top'), 10) >= Math.trunc(landingspot)) {
-                    $('#text').html('DEAL WITH IT');
+                    $('#text').html('TESTING CODE -RSW');
                     console.log("Function happened.");
                 }
                 else {}
