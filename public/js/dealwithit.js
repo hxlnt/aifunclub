@@ -7,9 +7,18 @@ if (getQueryVariable('link')) {
     $( '#ontop' ).html( '' );
     $( '#text' ).html( '' );
     scalar = 1;
+    $( 'form' ).replaceWith('<input type="button" id="redirect" value="Wanna make your own deal-with-it animation?">')
     origimgurl = getQueryVariable('link');
     socket.emit('origimgurl', origimgurl);
 }
+
+$( '#redirect' ).on('click', function(){
+   location.href('http://aifunclub.azurewebsites.net');
+});
+
+// $( '#share' ).on('click', function(){
+//    location.href('https://twitter.com/intent/tweet?text=http://aifunclub.azurewebsites.net/index.html?link=' + encodeURI(link) + '&original_referer=partytimeHXLNT');
+// });
 
 function submitUrl() {
     $( '#container' ).html( '' );
