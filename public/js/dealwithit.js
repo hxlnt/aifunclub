@@ -2,6 +2,15 @@ var socket = io();
 var scalar = 1;
 var face, confirmedurl, origimgurl, errcode;
 
+if (getQueryVariable('link')) {
+    $( '#container' ).html( '' );
+    $( '#ontop' ).html( '' );
+    $( '#text' ).html( '' );
+    scalar = 1;
+    origimgurl = getQueryVariable('link');
+    socket.emit('origimgurl', origimgurl);
+}
+
 function submitUrl() {
     $( '#container' ).html( '' );
     $( '#ontop' ).html( '' );
@@ -87,9 +96,19 @@ socket.on('face', function(response) {
                     else {}
                 });     
              }
+             $( '#share' ).prop('disabled', false);
         });
     }
     
 });
 
-
+function getQueryVariable(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
