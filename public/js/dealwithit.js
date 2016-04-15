@@ -40,6 +40,7 @@ socket.on('face', function(response) {
     }
     
     $( window ).resize(function() {
+        $( '#container' ).html( '' );
         $( '#ontop' ).html( '' );
         $( '#text' ).html( '' );
         scalar = 1;
