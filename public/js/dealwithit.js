@@ -1,6 +1,6 @@
 var socket = io();
 var scalar = 1;
-var face, imgheight, imgwidth, landingspot, confirmedurl, origimgurl, errcode;
+var face, confirmedurl, origimgurl, errcode;
 
 if (getQueryVariable('link')) {
     $( '#container' ).html( '' );
@@ -35,7 +35,7 @@ socket.on('face', function(response) {
     
 
     function imgMath(){
-                $( 'img' ).load(function(){
+        $( 'img' ).load(function(){
             for (i = 0; i < response.length; i++) {
                 face = response[i];
                 console.log(face);
@@ -47,19 +47,24 @@ socket.on('face', function(response) {
                     scalar = 1;
                     }
                     
-                else if ( $( '#text' ).width() < imgwidth ) {
-                    scalar = ($( '#text' ).width() / imgwidth);   
+                if ( $( '#text' ).width() < imgwidth ) {
+                    scalar = ($( '#text' ).width() / imgwidth);  
+                    imgwidth = scalar * imgwidth;   
+                    imgheight = scalar * imgheight;
+                    $('img').css("height", imgheight + 'px');
+                    $('#text').css("font-size", imgwidth/10 + "px");
+                    $('#text').css("top", (imgheight - (imgwidth/10)) + "px"); 
                     }
                     
-                else if ( ($( '#container' ).height() < imgheight) ) {
+                if ( ($( '#container' ).height() < imgheight) ) {
                     scalar = $( '#container' ).height() / imgheight;   
+                    imgwidth = scalar * imgwidth;   
+                    imgheight = scalar * imgheight;
+                    $('img').css("height", imgheight + 'px');
+                    $('#text').css("font-size", imgwidth/10 + "px");
+                    $('#text').css("top", (imgheight - (imgwidth/10)) + "px");
                     }
                     
-                imgwidth = scalar * imgwidth;   
-                imgheight = scalar * imgheight;
-                $('img').css("height", imgheight + 'px');
-                $('#text').css("font-size", imgwidth/10 + "px");
-                $('#text').css("top", (imgheight - (imgwidth/10)) + "px");
                 //$('.glasses').width = scalar * $('.glasses').width;
                 
                 var centerofeyes = ((face.faceLandmarks.pupilLeft.x + face.faceLandmarks.pupilRight.x) / 2);

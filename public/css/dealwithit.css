@@ -18,6 +18,7 @@ div#container {
     margin: auto;
     padding-top:12px;
     text-align: center;
+    border: 1px solid lightgray;
     }
 
 div#textcontainer {
@@ -48,6 +49,7 @@ div#text {
     text-align: center;
     z-index: 20;
     position: relative;
+    border: 1px solid lightgray;
     }
 
 form {
