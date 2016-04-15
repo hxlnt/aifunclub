@@ -18,11 +18,12 @@ socket.on('face', function(response) {
     }
     else {
         $('<img>', { src: origimgurl } ).appendTo( '#container' );
+        var scalar = 1;
         for (i = 0; i < response.length; i++) {
             face = response[i];
             console.log(face);
             $( 'img' ).load(function(){
-                var scalar = 1;
+                
                 var imgwidth = (scalar * $('img').width());
                 var imgheight = (scalar * $('img').height());
                 
@@ -58,21 +59,17 @@ socket.on('face', function(response) {
                         style: 'transform-origin: 50% 0%; top: 0px; transform: rotateY(180deg) rotateZ(' + (-1 * face.faceAttributes.headPose.roll) + 'deg); width:' + (scalar * 1.35 * face.faceRectangle.width) + 'px; left:' + ((scalar * (centerofeyes - 0.35 * (1.35 * face.faceRectangle.width))) + parseInt($('#container').css("margin-left"), 10)) + 'px; height:' + scalar * (1.2 * 0.15 * face.faceRectangle.width) + 'px;'
                     }).appendTo('#ontop');
                 }
-          
-                var landingspot = scalar * ( (face.faceLandmarks.pupilLeft.y + face.faceLandmarks.pupilRight.y) / 2 - (parseInt($(".glasses").eq(i-1).css('height'), 10) / 2.2) );
-                
-                console.log('Scalar: ' + scalar + ', landingspot: ' + landingspot);
-            
-                $(".glasses").eq(i-1).animate({ top: (landingspot) }, 1800, function() {
-                    if (parseInt($(".glasses").eq(0).css('top'), 10) >= Math.trunc(landingspot)) {
-                        $('#text').html('TESTING CODE -RSW');
-                        console.log("Function happened.");
-                    }
-                    else {}
-                });
-                
+                      
             });
         }
+        var landingspot = scalar * (face.faceLandmarks.pupilLeft.y + face.faceLandmarks.pupilRight.y) / 2 - (parseInt($(".glasses").eq(i).css('height'), 10) / 2);
+        $(".glasses").eq(i).animate({ top: (landingspot) }, 1800, function() {
+            if (parseInt($(".glasses").eq(-1).css('top'), 10) >= Math.trunc(landingspot)) {
+                $('#text').html('DEAL WITH IT');
+                console.log("Function happened.");
+            }
+            else {}
+        });
     }
 });
 
