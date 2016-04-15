@@ -43,8 +43,8 @@ socket.on('face', function(response) {
                 var imgwidth = (scalar * $('img').width());
                 var imgheight = (scalar * $('img').height());
                 
-                if ( $( '#container' ).height() >= imgheight && $( '#text' ).width() >= imgwidth ) {
-                    }
+                //if ( $( '#container' ).height() >= imgheight && $( '#text' ).width() >= imgwidth ) {
+                //    }
                     
                 if ( $( '#text' ).width() < imgwidth ) {
                     scalar = ($( '#text' ).width() / imgwidth);  
