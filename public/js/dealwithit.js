@@ -50,20 +50,19 @@ socket.on('face', function(response) {
                     scalar = ($( '#text' ).width() / imgwidth);  
                     imgwidth = scalar * imgwidth;   
                     imgheight = scalar * imgheight;
-                    $('img').css("height", imgheight + 'px');
-                    $('#text').css("font-size", imgwidth/10 + "px");
-                    $('#text').css("top", (imgheight - (imgwidth/10)) + "px"); 
                     }
                     
                 if ( ($( '#container' ).height() < imgheight) ) {
                     scalar = $( '#container' ).height() / imgheight;   
                     imgwidth = scalar * imgwidth;   
                     imgheight = scalar * imgheight;
-                    $('img').css("height", imgheight + 'px');
-                    $('#text').css("font-size", imgwidth/10 + "px");
-                    $('#text').css("top", (imgheight - (imgwidth/10)) + "px");
                     }
-                    
+                
+                $('img').css("height", imgheight + 'px');
+                $('#text').css("font-size", imgwidth/10 + "px");
+                $('#text').css("top", (imgheight - (imgwidth/10)) + "px");
+                
+                console.log('Scalar = ' + scalar);
                 //$('.glasses').width = scalar * $('.glasses').width;
                 
                 var centerofeyes = ((face.faceLandmarks.pupilLeft.x + face.faceLandmarks.pupilRight.x) / 2);
@@ -94,6 +93,7 @@ socket.on('face', function(response) {
                     else {}
                 });     
              }
+             
              $( '#share' ).prop('disabled', false);
         });
     }
