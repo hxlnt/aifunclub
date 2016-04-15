@@ -59,12 +59,12 @@ socket.on('face', function(response) {
                     }).appendTo('#ontop');
                 }
           
-                var landingspot = scalar * ( (face.faceLandmarks.pupilLeft.y + face.faceLandmarks.pupilRight.y) / 2 - (parseInt($(".glasses").eq(i).css('height'), 10) / 2.2) );
+                var landingspot = scalar * ( (face.faceLandmarks.pupilLeft.y + face.faceLandmarks.pupilRight.y) / 2 - (parseInt($(".glasses").eq(i-1).css('height'), 10) / 2.2) );
                 
                 console.log('Scalar: ' + scalar + ', landingspot: ' + landingspot);
             
-                $(".glasses").eq(i).animate({ top: (landingspot) }, 1800, function() {
-                    if (parseInt($(".glasses").eq(-1).css('top'), 10) >= Math.trunc(landingspot)) {
+                $(".glasses").eq(i-1).animate({ top: (landingspot) }, 1800, function() {
+                    if (parseInt($(".glasses").eq(0).css('top'), 10) >= Math.trunc(landingspot)) {
                         $('#text').html('TESTING CODE -RSW');
                         console.log("Function happened.");
                     }
