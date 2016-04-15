@@ -49,3 +49,57 @@ div#text {
     z-index: 20;
     position: relative;
     }
+
+form {
+    width: 100%;
+    margin: auto;
+    text-align:center;
+}
+
+input[type=url] {
+    width: 60%;
+    padding: 12px;
+    height: 26px;
+    font-family: 'Segoe UI', 'Verdana', sans-serif;
+    font-size: 18px;
+    text-align:center;
+    border: 1px solid gray;
+}
+
+input[type=button], input[type=submit] {
+    background-color: cornflowerblue;
+    color: white;
+    height: 50px;
+    text-decoration: bold;
+    font-family: 'Segoe UI', 'Verdana', sans-serif;
+    font-size: 18px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+input:disabled{
+    background-color: rgba(200,200,200,.6);
+    color: white; 
+}
+
+footer {
+    background-color: rgba(200,200,200,.3);
+    color: black;
+    height: 48px;
+    font-family: 'Segoe UI', 'Verdana', sans-serif;
+    position: fixed;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    text-align:center;
+}
+
+p {
+    font-family: 'Segoe UI', 'Verdana', sans-serif;
+}
+
+a {
+    text-decoration: underline;
+    color: black;
+    font-family: 'Segoe UI', 'Verdana', sans-serif;
+}

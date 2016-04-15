@@ -27,6 +27,7 @@ socket.on('face', function(response) {
         $( '#ontop' ).html( '' );
         $( '#text' ).html( '' );
         scalar = 1;
+        socket.emit('origimgurl', origimgurl);
         imgMath();
     });
 
