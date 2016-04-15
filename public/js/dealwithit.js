@@ -61,6 +61,8 @@ socket.on('face', function(response) {
           
                 
                 var landingspot = scalar * ( (face.faceLandmarks.pupilLeft.y + face.faceLandmarks.pupilRight.y) / 2 - (parseInt($(".glasses").eq(i).css('height'), 10) / 2.2) );
+                
+                console.log(landingspot);
             
                 $(".glasses").eq(i).animate({ top: (landingspot) }, 1800, function() {
                     if (parseInt($(".glasses").eq(-1).css('top'), 10) >= Math.trunc(landingspot)) {
