@@ -13,11 +13,6 @@ if (getQueryVariable('link')) {
 }
 
 
-
-// $( '#share' ).on('click', function(){
-//    location.href('https://twitter.com/intent/tweet?text=http://aifunclub.azurewebsites.net/index.html?link=' + encodeURI(link) + '&original_referer=partytimeHXLNT');
-// });
-
 function submitUrl() {
     $( '#container' ).html( '' );
     $( '#ontop' ).html( '' );
@@ -39,14 +34,6 @@ socket.on('face', function(response) {
         imgMath();
     }
     
-    $( window ).resize(function() {
-        $( '#container' ).html( '' );
-        $( '#ontop' ).html( '' );
-        $( '#text' ).html( '' );
-        scalar = 1;
-        socket.emit('origimgurl', origimgurl);
-        imgMath();
-    });
 
     function imgMath(){
                 $( 'img' ).load(function(){
