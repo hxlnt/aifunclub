@@ -13,7 +13,6 @@ div#ontop {
         
 div#container {
     position: relative;
-    border: 1px solid red;
     width: 75vw;
     height: calc(85vh - 60px);
     margin: auto;
@@ -23,7 +22,6 @@ div#container {
 
 div#textcontainer {
     position: relative;
-    border: 1px solid green;
     width: 75vw;
     margin: auto;
     text-align: center;
@@ -46,7 +44,6 @@ div#text {
         -2px 2px 0 white,
         2px 2px 0 white;
     z-index: 30;
-    border: 1px solid lightgreen;
     margin: auto;
     text-align: center;
     z-index: 20;
