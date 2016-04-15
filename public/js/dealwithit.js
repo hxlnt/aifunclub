@@ -6,6 +6,7 @@ function submitUrl() {
     $( '#container' ).html( '' );
     $( '#ontop' ).html( '' );
     $( '#text' ).html( '' );
+    scalar = 1;
     origimgurl = $( 'input:first' ).val(); 
     socket.emit('origimgurl', origimgurl);
 }
