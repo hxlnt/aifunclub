@@ -19,11 +19,11 @@ socket.on('face', function(response) {
     }
     else {
         $('<img>', { src: origimgurl } ).appendTo( '#container' );
-        for (i = 0; i < response.length; i++) {
-            face = response[i];
-            console.log(face);
-            $( 'img' ).load(function(){
-                
+        $( 'img' ).load(function(){
+            for (i = 0; i < response.length; i++) {
+                face = response[i];
+                console.log(face);
+            
                 var imgwidth = (scalar * $('img').width());
                 var imgheight = (scalar * $('img').height());
                 
@@ -68,9 +68,8 @@ socket.on('face', function(response) {
                         }
                     else {}
                 });     
-                
-            });
-        }
+             }
+        });
     }
 });
 
