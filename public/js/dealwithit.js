@@ -45,19 +45,27 @@ socket.on('face', function(response) {
                 
                 //if ( $( '#container' ).height() >= imgheight && $( '#text' ).width() >= imgwidth ) {
                 //    }
-                    
-                if ( $( '#text' ).width() < imgwidth ) {
-                    scalar = ($( '#text' ).width() / imgwidth);  
-                    imgwidth = scalar * imgwidth;   
-                    imgheight = scalar * imgheight;
-                    }
-                    
-                if ( ($( '#container' ).height() < imgheight) ) {
-                    scalar = $( '#container' ).height() / imgheight;   
-                    imgwidth = scalar * imgwidth;   
-                    imgheight = scalar * imgheight;
-                    }
                 
+                if ( ($( '#text' ).width() < imgwidth) && ($( '#container' ).height() < imgheight) ) {
+                    if ($( '#text' ).width() / imgwidth <= $( '#container' ).height() / imgheight) {
+                        scalar = ($( '#text' ).width() / imgwidth);     
+                    }  
+                    else { scalar = $( '#container' ).height() / imgheight }
+                }
+                    
+                else if ( ($( '#text' ).width() < imgwidth) && ($( '#container' ).height() >= imgheight) ) {
+                    scalar = ($( '#text' ).width() / imgwidth);  
+                    }
+                    
+                else if ( ($( '#container' ).height() < imgheight) && ($( '#text' ).width() >= imgwidth)) {
+                    scalar = $( '#container' ).height() / imgheight;    
+                    }
+                    
+                else { scalar = 1 }
+                    
+                imgwidth = scalar * imgwidth;   
+                imgheight = scalar * imgheight;
+                    
                 $('img').css("height", imgheight + 'px');
                 $('#text').css("font-size", imgwidth/10 + "px");
                 $('#text').css("top", (imgheight - (imgwidth/10)) + "px");
