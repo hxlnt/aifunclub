@@ -45,24 +45,23 @@ socket.on('face', function(response) {
                 $('#text').css("top", (imgheight - (imgwidth/10)) + "px");
                 //$('.glasses').width = scalar * $('.glasses').width;
                 
-            var centerofeyes = ((face.faceLandmarks.pupilLeft.x + face.faceLandmarks.pupilRight.x) / 2);
-            if (face.faceAttributes.headPose.yaw > 0) {
-                jQuery('<div>', {
-                    class: 'glasses',
-                    style: 'transform-origin: 50% 100%; top: 0px; transform: rotateZ(' + (face.faceAttributes.headPose.roll) + 'deg); width:' + (scalar * 1.35 * face.faceRectangle.width) + 'px; left:' + scalar * (centerofeyes - 0.62 * (1.35 * face.faceRectangle.width)) + 'px; height:' + scalar * (1.2 * 0.15 * face.faceRectangle.width) + 'px;'
-                }).appendTo('#ontop');
-            }
-            else {
-                jQuery('<div>', {
-                    class: 'glasses',
-                    style: 'transform-origin: 50% 0%; top: 0px; transform: rotateY(180deg) rotateZ(' + (-1 * face.faceAttributes.headPose.roll) + 'deg); width:' + (scalar * 1.35 * face.faceRectangle.width) + 'px; left:' + scalar * (centerofeyes - 0.35 * (1.35 * face.faceRectangle.width)) + 'px; height:' + scalar * (1.2 * 0.15 * face.faceRectangle.width) + 'px;'
-                }).appendTo('#ontop');
-            }
+                var centerofeyes = ((face.faceLandmarks.pupilLeft.x + face.faceLandmarks.pupilRight.x) / 2);
+                if (face.faceAttributes.headPose.yaw > 0) {
+                    jQuery('<div>', {
+                        class: 'glasses',
+                        style: 'transform-origin: 50% 100%; top: 0px; transform: rotateZ(' + (face.faceAttributes.headPose.roll) + 'deg); width:' + (scalar * 1.35 * face.faceRectangle.width) + 'px; left:' + scalar * (centerofeyes - 0.62 * (1.35 * face.faceRectangle.width)) + 'px; height:' + scalar * (1.2 * 0.15 * face.faceRectangle.width) + 'px;'
+                    }).appendTo('#ontop');
+                }
+                else {
+                    jQuery('<div>', {
+                        class: 'glasses',
+                        style: 'transform-origin: 50% 0%; top: 0px; transform: rotateY(180deg) rotateZ(' + (-1 * face.faceAttributes.headPose.roll) + 'deg); width:' + (scalar * 1.35 * face.faceRectangle.width) + 'px; left:' + scalar * (centerofeyes - 0.35 * (1.35 * face.faceRectangle.width)) + 'px; height:' + scalar * (1.2 * 0.15 * face.faceRectangle.width) + 'px;'
+                    }).appendTo('#ontop');
+                }
           
-                
                 var landingspot = scalar * ( (face.faceLandmarks.pupilLeft.y + face.faceLandmarks.pupilRight.y) / 2 - (parseInt($(".glasses").eq(i).css('height'), 10) / 2.2) );
                 
-                console.log(scalar);
+                console.log('Scalar: ' + scalar + ', landingspot: ' + landingspot);
             
                 $(".glasses").eq(i).animate({ top: (landingspot) }, 1800, function() {
                     if (parseInt($(".glasses").eq(-1).css('top'), 10) >= Math.trunc(landingspot)) {
