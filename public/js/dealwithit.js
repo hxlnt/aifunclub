@@ -35,45 +35,42 @@ socket.on('face', function(response) {
                 }).appendTo('#ontop');
             }
            
-            imgResize();
+            $( 'img' ).load(function(){
+                var scalar = 1;
+                var imgwidth = (scalar * $('img').width());
+                var imgheight = (scalar * $('img').height());
+                
+                if ( $( '#container' ).height() >= imgheight && $( '#text' ).width() >= imgwidth ) {
+                    scalar = 1;
+                    }
+                    
+                else if ( $( '#text' ).width() < imgwidth ) {
+                    scalar = ($( '#text' ).width() / imgwidth);   
+                    }
+                    
+                else if ( ($( '#container' ).height() < imgheight) ) {
+                    scalar = $( '#container' ).height() / imgheight;   
+                    }
+                    
+                imgwidth = scalar * imgwidth;   
+                imgheight = scalar * imgheight;
+                $('img').css("height", imgheight + 'px');
+                $('#text').css("font-size", imgwidth/10 + "px");
+                $('#text').css("top", (imgheight - (imgwidth/10)) + "px");
+                $('.glasses').width = scalar * $('.glasses').width;
+                
+                var landingspot = scalar * (face.faceLandmarks.pupilLeft.y + face.faceLandmarks.pupilRight.y) / 2 - (parseInt($(".glasses").eq(i).css('height'), 10) / 2.2);
             
-            $(".glasses").eq(i).animate({ top: (landingspot) }, 1800, function() {
-                if (parseInt($(".glasses").eq(-1).css('top'), 10) >= Math.trunc(landingspot)) {
-                    $('#text').html('TESTING CODE -RSW');
-                    console.log("Function happened.");
-                }
-                else {}
+                $(".glasses").eq(i).animate({ top: (landingspot) }, 1800, function() {
+                    if (parseInt($(".glasses").eq(-1).css('top'), 10) >= Math.trunc(landingspot)) {
+                        $('#text').html('TESTING CODE -RSW');
+                        console.log("Function happened.");
+                    }
+                    else {}
+                });
             });
         }
     }
 });
 
-function imgResize(){
-    $( 'img' ).load(function(){
-    var scalar = 1;
-    var imgwidth = (scalar * $('img').width());
-    var imgheight = (scalar * $('img').height());
     
-    if ( $( '#container' ).height() >= imgheight && $( '#text' ).width() >= imgwidth ) {
-        scalar = 1;
-        }
-        
-    else if ( $( '#text' ).width() < imgwidth ) {
-        scalar = ($( '#text' ).width() / imgwidth);   
-        }
-        
-    else if ( ($( '#container' ).height() < imgheight) ) {
-        scalar = $( '#container' ).height() / imgheight;   
-        }
-        
-     imgwidth = scalar * imgwidth;   
-     imgheight = scalar * imgheight;
-     $('img').css("height", imgheight + 'px');
-     $('#text').css("font-size", imgwidth/10 + "px");
-     $('#text').css("top", (imgheight - (imgwidth/10)) + "px");
-     $('.glasses').width = scalar * $('.glasses').width;
-     
-     var landingspot = scalar * (face.faceLandmarks.pupilLeft.y + face.faceLandmarks.pupilRight.y) / 2 - (parseInt($(".glasses").eq(i).css('height'), 10) / 2.2);
-     
-});    
-}
