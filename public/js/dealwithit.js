@@ -21,36 +21,7 @@ socket.on('face', function(response) {
         $('<img>', { src: origimgurl } ).appendTo( '#container' );
         //responsestored = response;
         $( 'img' ).load(function(){
-            for (i = 0; i < response.length; i++) {
-                face = response[i];
-                imgMath(face);
-            }
-            //leftoffset = parseInt($( '.glasses' ).eq(0).css('left'), 10) - parseInt($( '#container' ).css('margin-left'), 10);
-            glassesoffset = $( '.glasses' ).eq(0).offset();
-            imgoffset = $( 'img' ).offset();
-            offsetdiff = parseInt(glassesoffset.left,10) - parseInt(imgoffset.left, 10);
-            //$( '#share' ).prop('disabled', false);
-            $( 'p' ).prepend( '<strong><a href="https://twitter.com/intent/tweet?text=' + encodeURIComponent('Deal with it... ' + encodeURI('http://aifunclub.azurewebsites.net/index.html?link=') + encodeURI(origimgurl)) + '&hashtags=aifunclub" target="new">Share on twitter</a></strong> ' );
-        });
-    }
-});
-
-  
-$( window ).resize(function() {
-    // var imgleftoffset = parseInt($( '#container' ).css('margin-left'), 10);
-    // $( '.glasses' ).eq(0).css('left',  '' + (imgleftoffset + leftoffset) + 'px');
-    // console.log('Leftoffset: ' + leftoffset + ', imgleftoffset: ' + imgleftoffset);
-    var newimgoffset = $( 'img' ).offset();
-    var newglassesoffset = parseInt(newimgoffset.left, 10) + offsetdiff
-    $( '.glasses' ).eq(0).css('left', newglassesoffset + 'px');
-    
-});
-
-
-    function imgMath(face){
-        
-                console.log(face);
-            
+                
                 var imgwidth = (scalar * $('img').width());
                 var imgheight = (scalar * $('img').height());
                 
@@ -82,6 +53,36 @@ $( window ).resize(function() {
                 $('#text').css("top", (imgheight - (imgwidth/10)) + "px");
                 
                 console.log('Scalar = ' + scalar);
+                
+            for (i = 0; i < response.length; i++) {
+                face = response[i];
+                imgMath(face);
+            }
+            //leftoffset = parseInt($( '.glasses' ).eq(0).css('left'), 10) - parseInt($( '#container' ).css('margin-left'), 10);
+            glassesoffset = $( '.glasses' ).eq(0).offset();
+            imgoffset = $( 'img' ).offset();
+            offsetdiff = parseInt(glassesoffset.left,10) - parseInt(imgoffset.left, 10);
+            //$( '#share' ).prop('disabled', false);
+            $( 'p' ).prepend( '<strong><a href="https://twitter.com/intent/tweet?text=' + encodeURIComponent('Deal with it... ' + encodeURI('http://aifunclub.azurewebsites.net/index.html?link=') + encodeURI(origimgurl)) + '&hashtags=aifunclub" target="new">Share on twitter</a></strong> ' );
+        });
+    }
+});
+
+  
+$( window ).resize(function() {
+    // var imgleftoffset = parseInt($( '#container' ).css('margin-left'), 10);
+    // $( '.glasses' ).eq(0).css('left',  '' + (imgleftoffset + leftoffset) + 'px');
+    // console.log('Leftoffset: ' + leftoffset + ', imgleftoffset: ' + imgleftoffset);
+    var newimgoffset = $( 'img' ).offset();
+    var newglassesoffset = parseInt(newimgoffset.left, 10) + offsetdiff
+    $( '.glasses' ).eq(0).css('left', newglassesoffset + 'px');
+    
+});
+
+
+    function imgMath(face){
+        
+
                 //$('.glasses').width = scalar * $('.glasses').width;
                 
                 var centerofeyes = ((face.faceLandmarks.pupilLeft.x + face.faceLandmarks.pupilRight.x) / 2);
