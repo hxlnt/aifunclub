@@ -34,7 +34,7 @@ socket.on('face', function(response) {
   
 $( window ).resize(function() {
     var imgleftoffset = parseInt($( '#container' ).css('margin-left'), 10);
-    $( '.glasses' ).css('left',  '' + (imgleftoffset + leftoffset) + 'px;');
+    $( '.glasses' ).eq(0).css('left',  '' + (imgleftoffset + leftoffset) + 'px;');
     console.log('Leftoffset: ' + leftoffset + ', imgleftoffset: ' + imgleftoffset);
 });
 
