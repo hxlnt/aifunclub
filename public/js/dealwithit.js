@@ -25,7 +25,10 @@ socket.on('face', function(response) {
                 face = response[i];
                 imgMath(face);
             }
-            leftoffset = parseInt($( '.glasses' ).eq(0).css('left'), 10) - parseInt($( '#container' ).css('margin-left'), 10);
+            //leftoffset = parseInt($( '.glasses' ).eq(0).css('left'), 10) - parseInt($( '#container' ).css('margin-left'), 10);
+            glassesoffset = $( '.glasses' ).eq(0).offset();
+            imgoffset = $( 'img' ).offset();
+            offsetdiff = parseInt(glassesoffset.left,10) - parseInt(imgoffset.left, 10);
             $( '#share' ).prop('disabled', false);
         });
     }
@@ -33,9 +36,13 @@ socket.on('face', function(response) {
 
   
 $( window ).resize(function() {
-    var imgleftoffset = parseInt($( '#container' ).css('margin-left'), 10);
-    $( '.glasses' ).eq(0).css('left',  '' + (imgleftoffset + leftoffset) + 'px');
-    console.log('Leftoffset: ' + leftoffset + ', imgleftoffset: ' + imgleftoffset);
+    // var imgleftoffset = parseInt($( '#container' ).css('margin-left'), 10);
+    // $( '.glasses' ).eq(0).css('left',  '' + (imgleftoffset + leftoffset) + 'px');
+    // console.log('Leftoffset: ' + leftoffset + ', imgleftoffset: ' + imgleftoffset);
+    var newimgoffset = $( 'img' ).offset();
+    var newglassesoffset = parseInt(newimgoffset.left, 10) + offsetdiff
+    $( '.glasses' ).eq(0).css('left', newglassesoffset + 'px');
+    
 });
 
 
