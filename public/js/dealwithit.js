@@ -22,8 +22,8 @@ socket.on('face', function(response) {
         //responsestored = response;
         $( 'img' ).load(function(){
                 
-                var imgwidth = (scalar * $('img').width());
-                var imgheight = (scalar * $('img').height());
+                imgwidth = (scalar * $('img').width());
+                imgheight = (scalar * $('img').height());
                 
                 //if ( $( '#container' ).height() >= imgheight && $( '#text' ).width() >= imgwidth ) {
                 //    }
@@ -73,8 +73,8 @@ $( window ).resize(function() {
     // var imgleftoffset = parseInt($( '#container' ).css('margin-left'), 10);
     // $( '.glasses' ).eq(0).css('left',  '' + (imgleftoffset + leftoffset) + 'px');
     // console.log('Leftoffset: ' + leftoffset + ', imgleftoffset: ' + imgleftoffset);
-    var newimgoffset = $( 'img' ).offset();
-    var newglassesoffset = parseInt(newimgoffset.left, 10) + offsetdiff
+    newimgoffset = $( 'img' ).offset();
+    newglassesoffset = parseInt(newimgoffset.left, 10) + offsetdiff
     $( '.glasses' ).eq(0).css('left', newglassesoffset + 'px');
     
 });
