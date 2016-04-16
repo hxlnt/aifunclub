@@ -1,6 +1,6 @@
 var socket = io();
 var scalar = 1;
-var face, confirmedurl, origimgurl, errcode;
+var face, responsestored, confirmedurl, origimgurl, errcode;
 
 if (getQueryVariable('link')) {
     $( '#container' ).html( '' );
@@ -30,6 +30,7 @@ socket.on('face', function(response) {
     }
     else {
         $('<img>', { src: origimgurl } ).appendTo( '#container' );
+        responsestored = response;
         imgMath();
     }
     
@@ -104,6 +105,12 @@ socket.on('face', function(response) {
         });
     }
     
+});
+
+
+$( window ).resize(function() {
+    response = responsestored;
+    imgMath();
 });
 
 function getQueryVariable(variable)

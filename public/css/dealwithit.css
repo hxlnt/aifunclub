@@ -8,7 +8,7 @@
 
 div#ontop {
     z-index: 20;
-    position: relative;
+    position: fixed;
     }
         
 div#container {
@@ -32,7 +32,7 @@ div.glasses {
     background-image: url('../img/glasses.svg');
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative;
+    position: fixed;
     z-index: 20;
     }
     
