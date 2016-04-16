@@ -12,17 +12,6 @@ if (getQueryVariable('link')) {
     socket.emit('origimgurl', origimgurl);
 }
 
-function submitUrl() {
-    $( '#container' ).html( '' );
-    $( '#ontop' ).html( '' );
-    $( '#text' ).html( '' );
-    scalar = 1;
-    origimgurl = $( 'input:first' ).val(); 
-    socket.emit('origimgurl', origimgurl);
-}
-
-// TODO: Handle errors if submitted URL doesn't return proper JSON 
-
 socket.on('face', function(response) {
     if (response == '') { 
         alert('Error! Make sure your image has at least one face and is less than 4 MB.');
@@ -31,14 +20,28 @@ socket.on('face', function(response) {
     else {
         $('<img>', { src: origimgurl } ).appendTo( '#container' );
         responsestored = response;
-        imgMath();
-    }
-    
-
-    function imgMath(){
         $( 'img' ).load(function(){
             for (i = 0; i < response.length; i++) {
                 face = response[i];
+                imgMath(face);
+            }
+            $( '#share' ).prop('disabled', false);
+        });
+    }
+});
+    
+$( window ).resize(function() {
+    response = responsestored;
+    for (i = 0; i < response.length; i++) {
+        face = response[i];
+        imgMath(face);
+        }
+    $( '#share' ).prop('disabled', false);
+});
+
+
+    function imgMath(face){
+        
                 console.log(face);
             
                 var imgwidth = (scalar * $('img').width());
@@ -101,25 +104,22 @@ socket.on('face', function(response) {
                 });     
              }
              
-             $( '#share' ).prop('disabled', false);
-        });
-    }
-    
-});
+function submitUrl() {
+    $( '#container' ).html( '' );
+    $( '#ontop' ).html( '' );
+    $( '#text' ).html( '' );
+    scalar = 1;
+    origimgurl = $( 'input:first' ).val(); 
+    socket.emit('origimgurl', origimgurl);
+}
 
 
-$( window ).resize(function() {
-    response = responsestored;
-    imgMath();
-});
-
-function getQueryVariable(variable)
-{
-       var query = window.location.search.substring(1);
-       var vars = query.split("&");
-       for (var i=0;i<vars.length;i++) {
-               var pair = vars[i].split("=");
-               if(pair[0] == variable){return pair[1];}
-       }
-       return(false);
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) { return pair[1]; }
+        }
+    return(false);
 }
