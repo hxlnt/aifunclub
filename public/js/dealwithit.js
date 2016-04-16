@@ -25,14 +25,13 @@ socket.on('face', function(response) {
                 face = response[i];
                 imgMath(face);
             }
-            var leftoffset = parseInt($( '.glasses' ).eq(0).css('left'), 10) - parseInt($( '#container' ).css('margin-left'), 10);
+            leftoffset = parseInt($( '.glasses' ).eq(0).css('left'), 10) - parseInt($( '#container' ).css('margin-left'), 10);
             $( '#share' ).prop('disabled', false);
         });
     }
 });
 
-
-    
+  
 $( window ).resize(function() {
     var imgleftoffset = parseInt($( '#container' ).css('margin-left'), 10);
     $( '.glasses' ).css('left',  (imgleftoffset + leftoffset) + 'px;');
