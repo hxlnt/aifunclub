@@ -30,14 +30,9 @@ socket.on('face', function(response) {
     }
 });
     
-// $( window ).resize(function() {
-//     response = responsestored;
-//     for (i = 0; i < response.length; i++) {
-//         face = response[i];
-//         imgMath(face);
-//         }
-//     $( '#share' ).prop('disabled', false);
-// });
+$( window ).resize(function() {
+    $( '.glasses' ).css("left", ((scalar * (centerofeyes - 0.35 * (1.35 * face.faceRectangle.width))) + parseInt($('#container').css("margin-left"), 10) + ( ($('#container').width() - imgwidth)/2 )) + 'px;')
+});
 
 
     function imgMath(face){
