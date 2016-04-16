@@ -32,7 +32,7 @@ div.glasses {
     background-image: url('../img/glasses.svg');
     background-repeat: no-repeat;
     background-size: cover;
-    position: fixed;
+    position: relative;
     z-index: 20;
     }
     
