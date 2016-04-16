@@ -31,7 +31,7 @@ socket.on('face', function(response) {
 });
     
 $( window ).resize(function() {
-    $( '.glasses' ).css("left", ((scalar * (centerofeyes - 0.35 * (1.35 * face.faceRectangle.width))) + parseInt($('#container').css("margin-left"), 10) + ( ($('#container').width() - imgwidth)/2 )) + 'px;')
+    $( '.glasses' ).css("left", ( $( '.glasses' ).css("left") - parseInt($('#container').css("margin-right"), 10) ) + 'px;');
 });
 
 
