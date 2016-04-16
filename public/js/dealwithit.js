@@ -30,7 +30,7 @@ socket.on('face', function(response) {
             imgoffset = $( 'img' ).offset();
             offsetdiff = parseInt(glassesoffset.left,10) - parseInt(imgoffset.left, 10);
             //$( '#share' ).prop('disabled', false);
-            $( 'p' ).prepend( '<strong><a href="https://twitter.com/intent/tweet?text=' + encodeURIComponent('Deal with it... ' + encodeURI('http://aifunclub.azurewebsites.net/index.html?link=') + encodeURI(origimgurl)) + '&hashtags=aifunclub" target="new">Share on twitter</a></strong>' );
+            $( 'p' ).prepend( '<strong><a href="https://twitter.com/intent/tweet?text=' + encodeURIComponent('Deal with it... ' + encodeURI('http://aifunclub.azurewebsites.net/index.html?link=') + encodeURI(origimgurl)) + '&hashtags=aifunclub" target="new">Share on twitter</a></strong> ' );
         });
     }
 });
@@ -72,7 +72,7 @@ $( window ).resize(function() {
                     scalar = $( '#container' ).height() / imgheight;    
                     }
                     
-                else { scalar = 1 }
+                else { }
                     
                 imgwidth = scalar * imgwidth;   
                 imgheight = scalar * imgheight;
