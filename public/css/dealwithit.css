@@ -54,6 +54,7 @@ form {
     width: 100%;
     margin: auto;
     text-align:center;
+    position: relative;
 }
 
 input[type=url] {
