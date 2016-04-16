@@ -1,9 +1,7 @@
 ![GIF](bot.gif)
 
 ### the dealwithit bot
-Detects all faces in a photo and slides on a pair of pixel shades. Truly a worthwhile use of the bountiful technological feast made possible by machine learning and artificial intelligence. Deal with it.
-
-### [aifunclub.azurewebsites.net](http://aifunclub.azurewebsites.net)
+Detects all faces in a photo and slides on a pair of pixel shades. Truly a worthwhile use of the bountiful technological feast made possible by machine learning and artificial intelligence. Deal with it. Test it out at [aifunclub.azurewebsites.net](http://aifunclub.azurewebsites.net).
 
 ### What's under the hood
 - [Project Oxford for Node](https://github.com/felixrieseberg/project-oxford) calls the [Microsoft Face API](http://microsoft.com/cognitive) to return angle, pitch, and coordinates of eyes and eyebrows for each face detected (max. 64).
