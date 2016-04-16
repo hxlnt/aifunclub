@@ -30,10 +30,10 @@ socket.on('face', function(response) {
     }
 });
 
-var leftoffset = $( '.glasses' ).eq(0).css('left') - $( 'img' ).css('left');
+var leftoffset = parseInt($( '.glasses' ).eq(0).css('left'), 10) - parseInt($( 'img' ).css('left'), 10);
     
 $( window ).resize(function() {
-    var imgleftoffset = $( 'img' ).css('left');
+    var imgleftoffset = parseInt($( 'img' ).css('left'));
     $( '.glasses' ).css('left',  (imgleftoffset + leftoffset) + 'px;');
     console.log('Leftoffset: ' + leftoffset + ', imgleftoffset: ' + imgleftoffset);
 });
