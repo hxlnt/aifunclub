@@ -1,6 +1,6 @@
 var socket = io();
 var scalar = 1;
-var face, responsestored, confirmedurl, origimgurl, errcode;
+var face, confirmedurl, origimgurl, errcode;
 
 if (getQueryVariable('link')) {
     $( '#container' ).html( '' );
@@ -19,7 +19,7 @@ socket.on('face', function(response) {
     }
     else {
         $('<img>', { src: origimgurl } ).appendTo( '#container' );
-        responsestored = response;
+        //responsestored = response;
         $( 'img' ).load(function(){
             for (i = 0; i < response.length; i++) {
                 face = response[i];
@@ -29,10 +29,12 @@ socket.on('face', function(response) {
         });
     }
 });
+
+var leftoffset = $( '.glasses' ).eq(0).css('left') - $( 'img' ).css('left');
     
 $( window ).resize(function() {
-    var leftoffset = $( '.glasses' ).css("left");
-    $( '.glasses' ).css('left', leftoffset - parseInt($('#container').css("margin-right"), 10) + 'px;');
+    var imgleftoffset = $( 'img' ).css('left');
+    $( '.glasses' ).css('left',  (imgleftoffset + leftoffset) + 'px;');
 });
 
 
