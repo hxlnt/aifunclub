@@ -1,7 +1,7 @@
 ### the dealwithit bot
 Detects all faces in a photo and slides on a pair of pixel shades. Truly a worthwhile use of the bountiful technological feast made possible by machine learning and artificial intelligence. Deal with it.
 
-![GIF](test.gif)
+![GIF](bot.gif)
 
 ### [aifunclub.azurewebsites.net](http://aifunclub.azurewebsites.net)
 
