@@ -8,7 +8,7 @@
 
 div#ontop {
     z-index: 20;
-    position: fixed;
+    position: relative;
     }
         
 div#container {
