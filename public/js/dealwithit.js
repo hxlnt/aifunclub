@@ -35,6 +35,7 @@ var leftoffset = $( '.glasses' ).eq(0).css('left') - $( 'img' ).css('left');
 $( window ).resize(function() {
     var imgleftoffset = $( 'img' ).css('left');
     $( '.glasses' ).css('left',  (imgleftoffset + leftoffset) + 'px;');
+    console.log('Leftoffset: ' + leftoffset + ', imgleftoffset: ' + imgleftoffset);
 });
 
 
