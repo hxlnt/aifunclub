@@ -74,7 +74,7 @@ socket.on('face', function(response) {
             history.pushState({}, "new url", "?link=" + origimgurl);
             //$( '#share' ).prop('disabled', false);
             // $( 'p' ).prepend( '<strong><a href="https://twitter.com/intent/tweet?text=' + encodeURIComponent('Deal with it... ' + encodeURI('http://aifunclub.azurewebsites.net/index.html?link=') + encodeURI(origimgurl)) + '&hashtags=aifunclub" target="new">Share on twitter</a></strong> ' );
-            $( 'form' ).replaceWith('<form action="http://aifunclub.azurewebsites.net/"><input type="button" id="redirect" value="Wanna make another?"> <input type="button" id="twitter" value="Share on twitter">');
+            $( 'form' ).replaceWith('<form action="http://aifunclub.azurewebsites.net/"><input type="submit" id="redirect" value="Wanna make another?"> <input type="button" id="twitter" value="Share on twitter">');
         });
     }
 });
