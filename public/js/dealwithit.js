@@ -80,7 +80,7 @@ $( window ).resize(function() {
     newimgoffset = $( 'img' ).offset();
     newglassesoffset = parseInt(newimgoffset.left, 10) + offsetdiff
     //$( '.glasses' ).eq(0).css('left', newglassesoffset + 'px');
-    $( '.glasses' ).eq(0).css('left', newglassesoffset + 'px');
+    $( '.glasses' ).css('left', newglassesoffset + 'px');
     
 });
 
