@@ -62,6 +62,8 @@ socket.on('face', function(response) {
             }
             //leftoffset = parseInt($( '.glasses' ).eq(0).css('left'), 10) - parseInt($( '#container' ).css('margin-left'), 10);
             imgoffset = $( 'img' ).offset();
+            glassesoffset = [];
+            offsetdiff = [];
             $( ".glasses" ).each(function( i ) {
                 glassesoffset.push( $( '.glasses' ).eq(i).offset() );
                 offsetdiff.push(parseInt(glassesoffset[i].left,10) - parseInt(imgoffset.left, 10));
@@ -82,6 +84,7 @@ $( window ).resize(function() {
     // var imgleftoffset = parseInt($( '#container' ).css('margin-left'), 10);
     // $( '.glasses' ).eq(0).css('left',  '' + (imgleftoffset + leftoffset) + 'px');
     // console.log('Leftoffset: ' + leftoffset + ', imgleftoffset: ' + imgleftoffset);
+    newglassesoffset = [];
     newimgoffset = $( 'img' ).offset();
     $( ".glasses" ).each(function( i ) {
         newglassesoffset.push(parseInt(newimgoffset.left, 10) + offsetdiff[i]);
