@@ -61,9 +61,14 @@ socket.on('face', function(response) {
                 imgMath(face);
             }
             //leftoffset = parseInt($( '.glasses' ).eq(0).css('left'), 10) - parseInt($( '#container' ).css('margin-left'), 10);
-            glassesoffset = $( '.glasses' ).offset();
             imgoffset = $( 'img' ).offset();
-            offsetdiff = parseInt(glassesoffset.left,10) - parseInt(imgoffset.left, 10);
+            $( ".glasses" ).each(function( i ) {
+                glassesoffset.push( $( '.glasses' ).eq(i).offset() );
+                offsetdiff.push(parseInt(glassesoffset[i].left,10) - parseInt(imgoffset.left, 10));
+                });
+            //glassesoffset = $( '.glasses' ).eq(0).offset();
+            
+            
             history.pushState({}, "new url", "?link=" + origimgurl);
             //$( '#share' ).prop('disabled', false);
             // $( 'p' ).prepend( '<strong><a href="https://twitter.com/intent/tweet?text=' + encodeURIComponent('Deal with it... ' + encodeURI('http://aifunclub.azurewebsites.net/index.html?link=') + encodeURI(origimgurl)) + '&hashtags=aifunclub" target="new">Share on twitter</a></strong> ' );
@@ -78,13 +83,12 @@ $( window ).resize(function() {
     // $( '.glasses' ).eq(0).css('left',  '' + (imgleftoffset + leftoffset) + 'px');
     // console.log('Leftoffset: ' + leftoffset + ', imgleftoffset: ' + imgleftoffset);
     newimgoffset = $( 'img' ).offset();
-    $( '.glasses' ).each(function( i ){
-        newglassesoffset = parseInt(newimgoffset.left, 10) + offsetdiff[i];
-        //$( '.glasses' ).eq(0).css('left', newglassesoffset + 'px');
-        $( '.glasses' ).eq(i).css('left', newglassesoffset + 'px');
+    $( ".glasses" ).each(function( i ) {
+        newglassesoffset.push(parseInt(newimgoffset.left, 10) + offsetdiff[i]);
+         $( '.glasses' ).eq(i).css('left', newglassesoffset[i] + 'px');
     });
+   
     
-
     
 });
 
