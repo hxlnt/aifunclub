@@ -18,7 +18,7 @@ socket.on('face', function(response) {
         location.reload(true);
     }
     else {
-        $('<img>', { src: origimgurl } ).appendTo( '#container' );
+        $('<img>', { src: origimgurl, style: 'opacity:0'} ).appendTo( '#container' );
         //responsestored = response;
         $( 'img' ).load(function(){
                 
@@ -54,6 +54,8 @@ socket.on('face', function(response) {
                 
                 console.log('Scalar = ' + scalar);
                 
+                $('img').animate( {opacity: 1}, 500);
+                
             for (i = 0; i < response.length; i++) {
                 face = response[i];
                 imgMath(face);
@@ -62,8 +64,10 @@ socket.on('face', function(response) {
             glassesoffset = $( '.glasses' ).eq(0).offset();
             imgoffset = $( 'img' ).offset();
             offsetdiff = parseInt(glassesoffset.left,10) - parseInt(imgoffset.left, 10);
+            history.pushState({}, "new url", "?link=" + origimgurl);
             //$( '#share' ).prop('disabled', false);
-            $( 'p' ).prepend( '<strong><a href="https://twitter.com/intent/tweet?text=' + encodeURIComponent('Deal with it... ' + encodeURI('http://aifunclub.azurewebsites.net/index.html?link=') + encodeURI(origimgurl)) + '&hashtags=aifunclub" target="new">Share on twitter</a></strong> ' );
+            // $( 'p' ).prepend( '<strong><a href="https://twitter.com/intent/tweet?text=' + encodeURIComponent('Deal with it... ' + encodeURI('http://aifunclub.azurewebsites.net/index.html?link=') + encodeURI(origimgurl)) + '&hashtags=aifunclub" target="new">Share on twitter</a></strong> ' );
+            $( 'form' ).replaceWith('<form action="http://aifunclub.azurewebsites.net/"><input type="button" id="redirect" value="Wanna make another?"> <input type="button" id="twitter" value="Share on twitter">');
         });
     }
 });
@@ -77,6 +81,10 @@ $( window ).resize(function() {
     newglassesoffset = parseInt(newimgoffset.left, 10) + offsetdiff
     $( '.glasses' ).eq(0).css('left', newglassesoffset + 'px');
     
+});
+
+$( '#twitter' ).on(click, function(){
+    window.open = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent('Deal with it... ' + encodeURI('http://aifunclub.azurewebsites.net/index.html?link=') + encodeURI(origimgurl)) + '&hashtags=aifunclub" target="new"'
 });
 
 

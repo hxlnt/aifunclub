@@ -17,6 +17,7 @@ div#container {
     height: calc(85vh - 60px);
     margin: auto;
     padding-top:12px;
+    padding-bottom: 12px;
     text-align: center;
     }
 
@@ -55,6 +56,11 @@ form {
     margin: auto;
     text-align:center;
     position: relative;
+}
+
+img#dealwithitbot {
+    width: 100%;  
+    max-width: 968px;   
 }
 
 input[type=url] {
