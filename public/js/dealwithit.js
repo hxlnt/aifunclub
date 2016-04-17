@@ -95,7 +95,8 @@ $( window ).resize(function() {
     
 });
 
-$( '#twitter' ).on('click', function(){
+$( 'body' ).on('click', "#twitter", function(){
+//$( '#twitter' ).on('click', function(){
     window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('Deal with it... ' + encodeURI('http://aifunclub.azurewebsites.net/index.html?link=') + encodeURI(origimgurl)) + '&hashtags=aifunclub"');
     console.log('Button pressed');
 });
