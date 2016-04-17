@@ -79,6 +79,7 @@ $( window ).resize(function() {
     // console.log('Leftoffset: ' + leftoffset + ', imgleftoffset: ' + imgleftoffset);
     newimgoffset = $( 'img' ).offset();
     newglassesoffset = parseInt(newimgoffset.left, 10) + offsetdiff
+    //$( '.glasses' ).eq(0).css('left', newglassesoffset + 'px');
     $( '.glasses' ).eq(0).css('left', newglassesoffset + 'px');
     
 });
