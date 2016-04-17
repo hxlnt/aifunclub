@@ -61,7 +61,7 @@ socket.on('face', function(response) {
                 imgMath(face);
             }
             //leftoffset = parseInt($( '.glasses' ).eq(0).css('left'), 10) - parseInt($( '#container' ).css('margin-left'), 10);
-            glassesoffset = $( '.glasses' ).eq(0).offset();
+            glassesoffset = $( '.glasses' ).offset();
             imgoffset = $( 'img' ).offset();
             offsetdiff = parseInt(glassesoffset.left,10) - parseInt(imgoffset.left, 10);
             history.pushState({}, "new url", "?link=" + origimgurl);
@@ -78,9 +78,13 @@ $( window ).resize(function() {
     // $( '.glasses' ).eq(0).css('left',  '' + (imgleftoffset + leftoffset) + 'px');
     // console.log('Leftoffset: ' + leftoffset + ', imgleftoffset: ' + imgleftoffset);
     newimgoffset = $( 'img' ).offset();
-    newglassesoffset = parseInt(newimgoffset.left, 10) + offsetdiff
-    //$( '.glasses' ).eq(0).css('left', newglassesoffset + 'px');
-    $( '.glasses' ).css('left', newglassesoffset + 'px');
+    $( '.glasses' ).each(function( i ){
+        newglassesoffset = parseInt(newimgoffset.left, 10) + offsetdiff[i];
+        //$( '.glasses' ).eq(0).css('left', newglassesoffset + 'px');
+        $( '.glasses' ).eq(i).css('left', newglassesoffset + 'px');
+    });
+    
+
     
 });
 
