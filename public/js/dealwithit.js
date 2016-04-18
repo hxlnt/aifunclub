@@ -72,13 +72,13 @@ function dealSuccess(response) {
                 face = response[i];
                 imgMath(face);
             }
-            imgoffset = $('img').offset();
-            glassesoffset = [];
-            offsetdiff = [];
-            $(".glasses").each(function (i) {
-                glassesoffset.push($('.glasses').eq(i).offset());
-                offsetdiff.push(parseInt(glassesoffset[i].left, 10) - parseInt(imgoffset.left, 10));
-            });
+            // imgoffset = $('img').offset();
+            // glassesoffset = [];
+            // offsetdiff = [];
+            // $(".glasses").each(function (i) {
+            //     glassesoffset.push($('.glasses').eq(i).offset());
+            //     offsetdiff.push(parseInt(glassesoffset[i].left, 10) - parseInt(imgoffset.left, 10));
+            // });
             history.pushState({}, "new url", "?link=" + origimgurl);
             $('form').replaceWith('<form action="http://aifunclub.azurewebsites.net/"><input type="submit" id="redirect" value="Wanna make another?"> <input type="button" id="twitter" value="Share on twitter">');
         });
