@@ -43,7 +43,6 @@ $(window).resize(function () {
 });
 
 function resizewait(){
-    $( '#ontop' ).show();
     location.reload();
 }
 
@@ -77,6 +76,7 @@ function dealSuccess(response) {
             $('#text').css("font-size", imgwidth / 10 + "px");
             $('#text').css("top", (imgheight - (imgwidth / 10)) + "px");
             $('img').animate({ opacity: 1 }, 500);
+            $( '#ontop' ).show();
             for (i = 0; i < response.length; i++) {
                 face = response[i];
                 imgMath(face);
