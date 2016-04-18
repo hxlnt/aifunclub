@@ -14,7 +14,6 @@ div#ontop {
 div#container {
     position: relative;
     width: 75vw;
-    height: calc(85vh - 60px);
     margin: auto;
     padding-top:12px;
     padding-bottom: 12px;
@@ -92,7 +91,6 @@ input:disabled{
 footer {
     background-color: rgba(200,200,200,.3);
     color: black;
-    height: 48px;
     font-family: 'Segoe UI', 'Verdana', sans-serif;
     position: fixed;
     bottom: 0;
