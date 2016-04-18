@@ -37,11 +37,13 @@ $(window).resize(function () {
     // $('#text').html('');
     // scalar = 1;
     // dealSuccess(facestored);
+    $( '#ontop' ).hide(); 
     clearTimeout(clearit);
     clearit = setTimeout(resizewait, 500);
 });
 
 function resizewait(){
+    $( '#ontop' ).show();
     location.reload();
 }
 
