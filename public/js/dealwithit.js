@@ -24,7 +24,7 @@ socket.on('face', function (response) {
 });
 
 
-$(window).resize(function () {
+$(window).resize(function (facestored) {
     // newglassesoffset = [];
     // newimgoffset = $('img').offset();
     // $(".glasses").each(function (i) {
