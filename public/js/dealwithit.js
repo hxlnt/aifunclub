@@ -18,6 +18,7 @@ socket.on('face', function (response) {
         location.reload(true);
     }
     else {
+        facestored = response;
         dealSuccess(response);
     }
 });
@@ -40,7 +41,6 @@ $('body').on('click', "#twitter", function () {
 
 function dealSuccess(response) {
         $('<img>', { src: origimgurl, style: 'opacity:0' }).appendTo('#container');
-        facestored = face;
         $('img').load(function () {
             $( "body" ).scrollTop(0);
             imgwidth = (scalar * $('img').width());
