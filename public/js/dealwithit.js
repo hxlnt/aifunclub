@@ -18,7 +18,29 @@ socket.on('face', function (response) {
         location.reload(true);
     }
     else {
+        dealSuccess(response);
+    }
+});
+
+
+$(window).resize(function () {
+    // newglassesoffset = [];
+    // newimgoffset = $('img').offset();
+    // $(".glasses").each(function (i) {
+    //     newglassesoffset.push(parseInt(newimgoffset.left, 10) + offsetdiff[i]);
+    //     $('.glasses').eq(i).css('left', newglassesoffset[i] + 'px');
+    // });
+    dealSuccess(facestored);
+});
+
+$('body').on('click', "#twitter", function () {
+    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('Deal with it... ' + encodeURI('http://aifunclub.azurewebsites.net/index.html?link=') + encodeURI(origimgurl)) + '&hashtags=aifunclub');
+    console.log('Button pressed');
+});
+
+function dealSuccess(response) {
         $('<img>', { src: origimgurl, style: 'opacity:0' }).appendTo('#container');
+        facestored = face;
         $('img').load(function () {
             $( "body" ).scrollTop(0);
             imgwidth = (scalar * $('img').width());
@@ -56,24 +78,7 @@ socket.on('face', function (response) {
             history.pushState({}, "new url", "?link=" + origimgurl);
             $('form').replaceWith('<form action="http://aifunclub.azurewebsites.net/"><input type="submit" id="redirect" value="Wanna make another?"> <input type="button" id="twitter" value="Share on twitter">');
         });
-    }
-});
-
-
-$(window).resize(function () {
-    newglassesoffset = [];
-    newimgoffset = $('img').offset();
-    $(".glasses").each(function (i) {
-        newglassesoffset.push(parseInt(newimgoffset.left, 10) + offsetdiff[i]);
-        $('.glasses').eq(i).css('left', newglassesoffset[i] + 'px');
-    });
-});
-
-$('body').on('click', "#twitter", function () {
-    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('Deal with it... ' + encodeURI('http://aifunclub.azurewebsites.net/index.html?link=') + encodeURI(origimgurl)) + '&hashtags=aifunclub');
-    console.log('Button pressed');
-});
-
+}
 
 function imgMath(face) {
     var centerofeyes = ((face.faceLandmarks.pupilLeft.x + face.faceLandmarks.pupilRight.x) / 2);
