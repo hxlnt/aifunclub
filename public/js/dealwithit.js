@@ -1,6 +1,7 @@
 var socket = io();
 var scalar = 1;
 var face, confirmedurl, origimgurl, errcode;
+var clearit;
 
 if (getQueryVariable('link')) {
     $('#container').html('');
@@ -24,19 +25,25 @@ socket.on('face', function (response) {
 });
 
 
-$(window).resize(function (facestored) {
+$(window).resize(function () {
     // newglassesoffset = [];
     // newimgoffset = $('img').offset();
     // $(".glasses").each(function (i) {
     //     newglassesoffset.push(parseInt(newimgoffset.left, 10) + offsetdiff[i]);
     //     $('.glasses').eq(i).css('left', newglassesoffset[i] + 'px');
     // });
-    $('#container').html('');
-    $('#ontop').html('');
-    $('#text').html('');
-    scalar = 1;
-    dealSuccess(facestored);
+    // $('#container').html('');
+    // $('#ontop').html('');
+    // $('#text').html('');
+    // scalar = 1;
+    // dealSuccess(facestored);
+    clearTimeout(clearit);
+    clearit = setTimeout(resizewait, 500);
 });
+
+function resizewait(){
+    location.reload();
+}
 
 $('body').on('click', "#twitter", function () {
     window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('Deal with it... ' + encodeURI('http://aifunclub.azurewebsites.net/index.html?link=') + encodeURI(origimgurl)) + '&hashtags=aifunclub');
