@@ -20,6 +20,7 @@ socket.on('face', function (response) {
     else {
         $('<img>', { src: origimgurl, style: 'opacity:0' }).appendTo('#container');
         $('img').load(function () {
+            $( "body" ).scrollTop(0);
             imgwidth = (scalar * $('img').width());
             imgheight = (scalar * $('img').height());
             if (($('#text').width() < imgwidth) && ($('#container').height() < imgheight)) {
