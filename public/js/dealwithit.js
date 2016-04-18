@@ -31,6 +31,10 @@ $(window).resize(function (facestored) {
     //     newglassesoffset.push(parseInt(newimgoffset.left, 10) + offsetdiff[i]);
     //     $('.glasses').eq(i).css('left', newglassesoffset[i] + 'px');
     // });
+    $('#container').html('');
+    $('#ontop').html('');
+    $('#text').html('');
+    scalar = 1;
     dealSuccess(facestored);
 });
 
