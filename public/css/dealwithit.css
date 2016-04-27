@@ -59,8 +59,8 @@ form {
 }
 
 img#dealwithitbot {
-    height: 50vh;
-    max-width: 968px;   
+    max-height: 50vh;
+    max-width: 70vw;   
 }
 
 input[type=url] {
