@@ -5,7 +5,7 @@ var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 var port = process.env.PORT || 3000;
 var oxford = require('project-oxford');
-var client = new oxford.Client(process.env.myoxfordkey);
+var client = new oxford.Client(process.env.myoxfordkey, 'westus');
 
 server.listen(port);
 
@@ -20,7 +20,7 @@ io.on('connection', function(socket) {
             analyzesHeadPose: true
         }).then(function(response) {
             socket.emit('face', response);
-            console.log(response);   
+            console.log(response);
             });
         });
     });
