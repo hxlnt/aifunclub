@@ -8,7 +8,7 @@ Detects all faces in a photo and slides on a pair of pixel shades. Truly a worth
 - [socket.io](https://github.com/socketio/socket.io) handles communication between the node server and client HTML.
 - [JQuery](https://jquery.com/) takes care of a few things like the generation and animation of glasses.
 
-If you want to play with this code on your own, you'll need to add your own [API key](http://microsoft.com/cognitive) for the Face API. 
+If you want to play with this code on your own, you'll need to add your own [API key](http://microsoft.com/cognitive) for the Face API. Be sure to update the API region (*e.g.,* 'westus') at the top of the code as well.
 
 ------
 
